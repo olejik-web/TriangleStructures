@@ -9,28 +9,36 @@ class Point
 public:
 	static const double diameter;
 	Point(double x, double y);
-	Point();
-	Point(const Point& point);
+	Point() = default;
+	Point(const Point& copy);
+	Point& operator=(const Point& copy);
+	~Point() = default;
 	QGraphicsEllipseItem* image();
-	double x();
-	double y();
-	double distance(const Point& point);
+	double x() const;
+	double y() const;
+	double distance(const Point& point) const;
+	bool operator==(const Point& other) const;
 private:
-	double m_x, m_y;
+	double m_x{0}, m_y{0};
 	std::unique_ptr<QGraphicsEllipseItem> m_image;
 };
+
+inline bool Point::operator==(const Point& other) const
+{
+	return abs(m_x - other.m_x) < 1e-5 && abs(m_y - other.m_y) < 1e-5;
+}
 
 inline QGraphicsEllipseItem* Point::image()
 {
 	return m_image.get();
 }
 
-inline double Point::x()
+inline double Point::x() const
 {
 	return m_x;
 }
 
-inline double Point::y()
+inline double Point::y() const
 {
 	return m_y;
 }

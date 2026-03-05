@@ -6,7 +6,11 @@ class Edge
 {
 public:
 	Edge(Point start, Point end);
-	Edge();
+	Edge() = default;
+	Edge(const Edge& edge);
+	Edge& operator=(const Edge& copy);
+	~Edge() = default;
+	bool intersects(const Edge& edge, Point& point);
 	const Point& start();
 	const Point& end();
 	QGraphicsLineItem* image();
@@ -16,9 +20,9 @@ private:
 	std::unique_ptr<QGraphicsLineItem> m_image;
 };
 
-inline double Edge::length()
+inline double Edge::length() const
 {
-
+	return m_start.distance(m_end);
 }
 
 inline const Point& Edge::start()

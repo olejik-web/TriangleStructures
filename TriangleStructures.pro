@@ -2,14 +2,24 @@ QT = core gui widgets
 
 CONFIG += c++17 cmdline
 
+CONFIG(debug, debug|release) {
+	QMAKE_CXXFLAGS += -fsanitize=address -fno-omit-frame-pointer
+	QMAKE_CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+	QMAKE_LFLAGS += -fsanitize=address
 
+	QMAKE_CXXFLAGS += -g -O1
+	QMAKE_CFLAGS += -g -O1
+
+	DEFINES += USE_ASAN
+}
 
 SOURCES += \
 	Edge.cpp \
 	MainWindow.cpp \
 	Point.cpp \
 	Triangle.cpp \
-	TriangleStructures.cpp
+	TriangleStructures.cpp \
+	Triangulation.cpp
 	Point.cpp
 	Edge.cpp
 	Triangle.cpp
@@ -19,7 +29,8 @@ HEADERS += \
 	MainWindow.h \
 	Point.h \
 	Point.h \
-	Triangle.h
+	Triangle.h \
+	Triangulation.h
 	Edge.h
 	Triangle.h
 
