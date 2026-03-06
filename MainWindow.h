@@ -3,6 +3,8 @@
 
 #include "Edge.h"
 #include "Point.h"
+#include "TriangulateScene.h"
+#include "Triangulation.h"
 #include <QGraphicsScene>
 #include <QMainWindow>
 #include <vector>
@@ -22,7 +24,8 @@ public:
 
 private:
 	Ui::MainWindow *ui;
-	QGraphicsScene m_scene;
+    TriangulateScene m_scene;
+    Triangulation m_triangulation;
 	std::vector<Point> m_points;
 	std::vector<Edge> m_edges;
 	void generatePoints();

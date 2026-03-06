@@ -2,10 +2,10 @@
 
 #include <QPen>
 
-Edge::Edge(Point start, Point end) :
+Edge::Edge(Point* start, Point* end) :
 	m_start(start),
 	m_end(end),
-	m_image(std::make_unique<QGraphicsLineItem>(m_start.x(), m_start.y(), m_end.x(), m_end.y()))
+    m_image(std::make_unique<QGraphicsLineItem>(m_start->x(), m_start->y(), m_end->x(), m_end->y()))
 {
 	m_image->setPen(QPen(Qt::black, 3));
 }
@@ -14,7 +14,7 @@ Edge::Edge(const Edge &edge)
 {
 	m_start = edge.m_start;
 	m_end = edge.m_end;
-	m_image = std::make_unique<QGraphicsLineItem>(m_start.x(), m_start.y(), m_end.x(), m_end.y());
+    m_image = std::make_unique<QGraphicsLineItem>(m_start->x(), m_start->y(), m_end->x(), m_end->y());
 	m_image->setPen(QPen(Qt::black, 3));
 }
 
@@ -34,13 +34,23 @@ bool Edge::intersects(const Edge& edge, Point& point)
 	return true;
 }
 
+void Edge::drop()
+{
+    m_image->setPen(QPen(Qt::black, 3));
+}
+
+void Edge::select()
+{
+    m_image->setPen(QPen(Qt::green, 3));
+}
+
 Edge &Edge::operator=(const Edge &copy)
 {
 	if (this != &copy)
 	{
 		m_start = copy.m_start;
 		m_end = copy.m_end;
-		m_image = std::make_unique<QGraphicsLineItem>(m_start.x(), m_start.y(), m_end.x(), m_end.y());
+        m_image = std::make_unique<QGraphicsLineItem>(m_start->x(), m_start->y(), m_end->x(), m_end->y());
 		m_image->setPen(QPen(Qt::black, 3));
 	}
 	return *this;

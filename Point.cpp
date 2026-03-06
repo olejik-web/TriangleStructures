@@ -38,4 +38,16 @@ double Point::distance(const Point& point) const
 	return sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
+void Point::drop()
+{
+    m_image->setBrush(QBrush(Qt::black));
+}
+
+void Point::select(bool isNeighbour)
+{
+    m_image->setBrush(QBrush(Qt::red));
+    if (isNeighbour)
+        m_image->setBrush(QBrush(Qt::blue));
+}
+
 const double Point::diameter = 10;

@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1200</width>
     <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>1200</width>
     <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
+    <width>1200</width>
     <height>600</height>
    </size>
   </property>
@@ -46,14 +46,62 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QGraphicsView" name="graphicsView">
-      <property name="enabled">
-       <bool>true</bool>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1">
+      <property name="spacing">
+       <number>0</number>
       </property>
-      <property name="renderHints">
-       <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
-      </property>
-     </widget>
+      <item>
+       <widget class="QGraphicsView" name="graphicsView">
+        <property name="renderHints">
+         <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,100">
+         <item>
+          <widget class="QLabel" name="structureTypeLabel">
+           <property name="text">
+            <string>Тип структуры данных</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="structureTypeComboBox"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="structureContentLabel">
+           <property name="text">
+            <string>Содержимое структуры данных</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="structureContent">
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

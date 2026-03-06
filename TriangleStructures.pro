@@ -19,6 +19,7 @@ SOURCES += \
 	Point.cpp \
 	Triangle.cpp \
 	TriangleStructures.cpp \
+	TriangulateScene.cpp \
 	Triangulation.cpp
 	Point.cpp
 	Edge.cpp
@@ -29,7 +30,9 @@ HEADERS += \
 	MainWindow.h \
 	Point.h \
 	Point.h \
+	StructureType.h \
 	Triangle.h \
+	TriangulateScene.h \
 	Triangulation.h
 	Edge.h
 	Triangle.h

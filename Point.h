@@ -18,6 +18,9 @@ public:
 	double y() const;
 	double distance(const Point& point) const;
 	bool operator==(const Point& other) const;
+    void drop();
+    void select(bool isNeighbour = false);
+    QPointF center() const;
 private:
 	double m_x{0}, m_y{0};
 	std::unique_ptr<QGraphicsEllipseItem> m_image;
@@ -41,6 +44,11 @@ inline double Point::x() const
 inline double Point::y() const
 {
 	return m_y;
+}
+
+inline QPointF Point::center() const
+{
+    return QPointF(m_x, m_y);
 }
 
 #endif // POINT_H
